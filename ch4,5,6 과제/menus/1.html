@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>국밥 상세설명</title>
+  <style>
+    :root{
+      --bg:#fafafa;
+      --card:#ffffff;
+      --accent:#d35400;
+      --muted:#666;
+      --radius:12px;
+      font-family: 'Noto Sans KR', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    body{
+      margin:0;
+      padding:32px;
+      background:linear-gradient(180deg,#fff 0%,var(--bg) 100%);
+      display:flex;
+      justify-content:center;
+      color:#222;
+    }
+    .card{
+      width:720px;
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:0 8px 30px rgba(15,15,15,0.06);
+      overflow:hidden;
+    }
+    .hero{
+      display:grid;
+      grid-template-columns:220px 1fr;
+      gap:20px;
+      padding:24px;
+      align-items:center;
+    }
+    .img-wrap{
+      width:220px;height:140px;border-radius:10px;overflow:hidden;flex-shrink:0;
+      background:linear-gradient(135deg,#f7c59f,#f0a36b);
+      display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;
+    }
+    .title{font-size:20px;margin:0 0 6px 0}
+    .subtitle{color:var(--muted);font-size:13px;margin:0}
+
+    .content{padding:0 24px 24px 24px;line-height:1.6}
+    .meta{display:flex;gap:12px;margin:12px 0;color:var(--muted);font-size:13px}
+    .chip{background:#fff4f0;border:1px solid rgba(211,84,0,0.12);padding:6px 10px;border-radius:999px;font-weight:600;color:var(--accent)}
+    .section{margin-top:14px}
+    .section h3{margin:0 0 8px 0;font-size:15px}
+    .list{display:flex;flex-wrap:wrap;gap:8px}
+    .list .item{background:#f6f6f6;padding:8px 10px;border-radius:8px;font-size:13px}
+    .hungry{margin-top:12px;padding:12px;border-radius:10px;background:linear-gradient(90deg,rgba(211,84,0,0.06),rgba(211,84,0,0.02));border:1px solid rgba(211,84,0,0.08);font-weight:600}
+
+    @media (max-width:760px){
+      .card{width:100%;margin:0 12px}
+      .hero{grid-template-columns:1fr;grid-auto-rows:auto}
+      .img-wrap{width:100%;height:180px}
+    }
+  </style>
+</head>
+<body>
+  <article class="card" aria-labelledby="gb-title">
+    <header class="hero">
+      <div class="img-wrap" role="img" aria-label="국밥 이미지">
+        국밥
+      </div>
+      <div>
+        <h1 id="gb-title" class="title">따끈한 국밥</h1>
+        <p class="subtitle">진하고 개운한 국물, 든든한 한 그릇</p>
+        <div class="meta">
+          <span class="chip">한식 · 국민메뉴</span>
+          <span class="meta-item">조리시간: 20분</span>
+          <span class="meta-item">칼로리: 약 650kcal</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="content">
+      <section class="section">
+        <h3>상세설명</h3>
+        <p>국물의 깊은 맛과 밥이 어우러진 든든한 한 끼입니다. 사골 또는 돼지뼈로 우려낸 진한 육수에 따끈한 밥을 말아 감칠맛을 더한 전통 음식입니다.</p>
+
+        <div class="hungry" aria-hidden="false">배고픔이 몰려올 때 따끈한 한 그릇</div>
+      </section>
+
+      <section class="section">
+        <h3>주요 재료</h3>
+        <div class="list">
+          <div class="item">쌀밥</div>
+          <div class="item">쇠고기/돼지고기</div>
+          <div class="item">사골/뼈육수</div>
+          <div class="item">파</div>
+          <div class="item">김치 또는 깍두기</div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h3>추천 드시는 법</h3>
+        <p>기호에 따라 고춧가루, 다진마늘, 참기름을 추가하고 김치와 함께 드세요. 추운 날이나 든든한 한 끼가 필요할 때 특히 좋습니다.</p>
+      </section>
+
+      <footer style="margin-top:18px;color:var(--muted);font-size:13px">작성: 국밥 가이드 · 업데이트: 오늘</footer>
+    </div>
+  </article>
+</body>
+</html>
