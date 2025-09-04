@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>내 소개 페이지</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+    .container {
+      width: 80%;
+      margin: auto;
+      padding: 20px;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+      background: #e3f2fd;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .header img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin-right: 20px;
+    }
+    .section {
+      background: white;
+      margin-bottom: 20px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    h2 {
+      margin-top: 0;
+      color: navy;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    td {
+      padding: 10px;
+    }
+    td:first-child {
+      font-weight: bold;
+      background: #f1f1f1;
+      width: 30%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!--  1. 맨 위: 사진 + 자기소개 -->
+    <div class="header">
+      <img src="3.png" alt="내 사진">
+      <div>
+        <h2>자기소개</h2>
+        <p>안녕하세요! 저는 컴퓨터공학과 3학년 백엔드 개발자 지망생입니다. 
+        Java, Spring을 주로 공부하고 있습니다.</p>
+      </div>
+    </div>
+
+    <!--  2. 기술스택 -->
+    <div class="section">
+      <h2>기술스택</h2>
+      <ul>
+        <li>java</li>
+        <li>python</li>
+        <li>Spring</li>
+        <li>Mysql</li>
+     
+      </ul>
+    </div>
+
+    <!--  3. 관심 있는 기술 -->
+    <div class="section">
+      <h2>관심 있는 기술</h2>
+      <p>웹 스크래핑, 업무자동화, 머신러닝 을 공부해보고 싶습니다.</p>
+    </div>
+
+    <!--  4. Contact -->
+    <div class="section">
+      <h2>Contact</h2>
+      <table>
+        <tr>
+          <td>GitHub 주소</td>
+          <td><a href="https://github.com/juwoojae" target="_blank">https://github.com/juwoojae</a></td>
+        </tr>
+        <tr>
+          <td>기술 블로그</td>
+          <td><a href="https://velog.io/@juwqq1234/posts" target="_blank">https://velog.io/@juwqq1234/posts</a></td>
+        </tr>
+        <tr>
+          <td>PS 사이트</td>
+          <td><a href="https://www.acmicpc.net/user/juwqq1234" target="_blank">https://www.acmicpc.net/user/juwqq1234</a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</body>
+</html>

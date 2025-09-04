@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+h1{ 
+   color: navy;
+   font-weight: bold;
+   text-align: center;
+   margin-top: 20px;
+   margin-bottom: 20px;
+}
+.input-container {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  gap: 10px;
+  max-width: 500px;
+  margin: 20px auto;
+}
+
+.input-container input {
+  flex: 1;
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.input-container button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.input-container button:hover {
+  background-color: #0056b3;
+}
+
+ul {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 0;
+  list-style: none;
+}
+
+ul li {
+  background: #fff;
+  padding: 12px 18px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  font-size: 18px;
+  color: #333;
+  font-weight: 500;
+  border-left: 5px solid #007bff;
+}
+</style>
+</head>
+<body>
+<div>
+    <h1>📌 To do list</h1>
+</div>  
+<div class="input-container">
+  <input id="test" type="text" placeholder="할 일을 입력하세요">
+  <button onclick="showName()">추가</button>
+</div>
+<ul id="result"></ul>
+
+<script>
+function showName() {
+    let input = document.getElementById("test");
+    let value = input.value.trim();
+
+    if (value === "") {
+        alert("할 일을 입력하세요!");
+        return;
+    }
+
+    // 새로운 li 요소 생성
+    let li = document.createElement("li");
+    li.innerText = "할 일: " + value;
+
+    // ul에 추가
+    document.getElementById("result").appendChild(li);
+
+    // 입력박스 초기화 및 포커스
+    input.value = "";
+    input.focus();
+}
+</script>
+</body>
+</html>
