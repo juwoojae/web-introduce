@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>점심 메뉴 조회</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background: #f0f2f5;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    th, td {
+      padding: 12px 15px;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+    }
+    th {
+      background-color: #4caf50;
+      color: white;
+    }
+    tr:hover {
+      background-color: #f1f1f1;
+      cursor: pointer;
+    }
+    .btn-container {
+      margin: 20px 0;
+      text-align: center;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 0 10px;
+      background-color: #4caf50;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+    .btn:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🍽️ 점심 메뉴 리스트</h1>
+
+  <!-- 메인 버튼들 -->
+  <div class="btn-container">
+    <a href="index.html" class="btn">메인으로</a>
+    <a href="menu.html" class="btn">메뉴 등록</a>
+  </div>
+
+  <!-- 테이블 영역 -->
+  <table id="menuTable">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>추천 메뉴</th>
+        <th>맵기</th>
+        <th>예산</th>
+        <th>음식 종류</th>
+        <th>기분</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 데이터가 여기 채워짐 -->
+    </tbody>
+  </table>
+
+  <script>
+    async function loadMenus() {
+      try {
+        const response = await fetch("https://a8f0f7a2-b301-4044-9995-6bfcec17b9c3.mock.pstmn.io");
+        if (!response.ok) throw new Error("네트워크 응답 오류");
+
+        const menus = await response.json();
+        const tbody = document.querySelector("#menuTable tbody");
+        tbody.innerHTML = "";
+
+        menus.forEach(menu => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${menu.id}</td>
+            <td>${menu.recommend}</td>
+            <td>${menu.spicy}</td>
+            <td>${menu.budgetVal} 원</td>
+            <td>${menu.foodType}</td>
+            <td>${menu.mood}</td>
+          `;
+
+          // 클릭 시 상세 페이지로 이동
+          row.addEventListener("click", () => {
+            window.location.href = `menus/${menu.id}.html`;
+          });
+
+          tbody.appendChild(row);
+        });
+
+      } catch (error) {
+        console.error("데이터 불러오기 실패:", error);
+      }
+    }
+
+    // 페이지 로드 시 실행
+    loadMenus();
+  </script>
+
+</body>
+</html>
