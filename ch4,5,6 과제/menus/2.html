@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>스시 상세설명</title>
+  <style>
+    :root{
+      --bg:#fafafa;
+      --card:#ffffff;
+      --accent:#2980b9;
+      --muted:#666;
+      --radius:12px;
+      font-family: 'Noto Sans KR', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    body{
+      margin:0;
+      padding:32px;
+      background:linear-gradient(180deg,#fff 0%,var(--bg) 100%);
+      display:flex;
+      justify-content:center;
+      color:#222;
+    }
+    .card{
+      width:720px;
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:0 8px 30px rgba(15,15,15,0.06);
+      overflow:hidden;
+    }
+    .hero{
+      display:grid;
+      grid-template-columns:220px 1fr;
+      gap:20px;
+      padding:24px;
+      align-items:center;
+    }
+    .img-wrap{
+      width:220px;height:140px;border-radius:10px;overflow:hidden;flex-shrink:0;
+      background:linear-gradient(135deg,#a8d8f0,#2980b9);
+      display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;
+    }
+    .title{font-size:20px;margin:0 0 6px 0}
+    .subtitle{color:var(--muted);font-size:13px;margin:0}
+
+    .content{padding:0 24px 24px 24px;line-height:1.6}
+    .meta{display:flex;gap:12px;margin:12px 0;color:var(--muted);font-size:13px}
+    .chip{background:#f0f9ff;border:1px solid rgba(41,128,185,0.12);padding:6px 10px;border-radius:999px;font-weight:600;color:var(--accent)}
+    .section{margin-top:14px}
+    .section h3{margin:0 0 8px 0;font-size:15px}
+    .list{display:flex;flex-wrap:wrap;gap:8px}
+    .list .item{background:#f6f6f6;padding:8px 10px;border-radius:8px;font-size:13px}
+    .hungry{margin-top:12px;padding:12px;border-radius:10px;background:linear-gradient(90deg,rgba(41,128,185,0.06),rgba(41,128,185,0.02));border:1px solid rgba(41,128,185,0.08);font-weight:600}
+
+    @media (max-width:760px){
+      .card{width:100%;margin:0 12px}
+      .hero{grid-template-columns:1fr;grid-auto-rows:auto}
+      .img-wrap{width:100%;height:180px}
+    }
+  </style>
+</head>
+<body>
+  <article class="card" aria-labelledby="sushi-title">
+    <header class="hero">
+      <div class="img-wrap" role="img" aria-label="스시 이미지">
+        스시
+      </div>
+      <div>
+        <h1 id="sushi-title" class="title">신선한 스시</h1>
+        <p class="subtitle">바다의 풍미가 가득한 한입의 예술</p>
+        <div class="meta">
+          <span class="chip">일식 · 정통메뉴</span>
+          <span class="meta-item">조리시간: 15분</span>
+          <span class="meta-item">칼로리: 약 400kcal</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="content">
+      <section class="section">
+        <h3>상세설명</h3>
+        <p>갓 지은 밥 위에 신선한 생선을 올려 만든 정통 일본 음식입니다. 한입마다 바다의 향과 깔끔한 감칠맛이 조화롭게 어우러집니다.</p>
+
+        <div class="hungry" aria-hidden="false">배고픔이 몰려올 때 상큼한 한 입</div>
+      </section>
+
+      <section class="section">
+        <h3>주요 재료</h3>
+        <div class="list">
+          <div class="item">쌀밥</div>
+          <div class="item">생선(연어, 참치 등)</div>
+          <div class="item">와사비</div>
+          <div class="item">간장</div>
+          <div class="item">초생강</div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h3>추천 드시는 법</h3>
+        <p>간장에 살짝 찍어 와사비와 함께 즐기면 풍미가 더욱 살아납니다. 깔끔한 식사나 특별한 날에 어울립니다.</p>
+      </section>
+
+      <footer style="margin-top:18px;color:var(--muted);font-size:13px">작성: 스시 가이드 · 업데이트: 오늘</footer>
+    </div>
+  </article>
+</body>
+</html>
