@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>점심 메뉴 추천기</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+    .section {
+      margin-bottom: 20px;
+      padding: 15px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    label {
+      margin-right: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🍴 점심 메뉴 추천기</h1>
+
+  <!-- 1. 맵기 정도 -->
+  <div class="section">
+    <label for="spicy">맵기 정도: </label>
+    <select id="spicy">
+      <option value="">선택</option>
+      <option value="🌶️">🌶️</option>
+      <option value="🌶️🌶️">🌶️🌶️</option>
+      <option value="🌶️🌶️🌶️">🌶️🌶️🌶️</option>
+    </select>
+  </div>
+
+  <!-- 2. 예산 -->
+  <div class="section">
+    <label for="budget">예산: </label>
+    <input type="range" id="budget" min="5000" max="20000" step="1000">
+    <span id="budgetValue">12500</span> 원
+  </div>
+
+  <!-- 3. 음식 종류 -->
+  <div class="section">
+    <p>음식 종류:</p>
+    <label><input type="radio" name="foodType" value="한식"> 한식</label>
+    <label><input type="radio" name="foodType" value="일식"> 일식</label>
+    <label><input type="radio" name="foodType" value="중식"> 중식</label>
+    <label><input type="radio" name="foodType" value="양식"> 양식</label>
+  </div>
+
+  <!-- 4. 오늘의 기분 -->
+  <div class="section">
+    <label for="mood">오늘의 기분: </label>
+    <input type="text" id="mood" placeholder="배고파요,기분좋음,힘들어요...">
+  </div>
+
+  <!-- 5. 결과 출력 -->
+  <div class="section">
+    <button id="recommendBtn">추천받기</button>
+  </div>
+
+  <script>
+  // 예산 슬라이더 값 표시
+  const budget = document.getElementById('budget');
+  const budgetValue = document.getElementById('budgetValue');
+  budgetValue.textContent = budget.value;
+  budget.addEventListener('input', () => {
+    budgetValue.textContent = budget.value;
+  });
+
+  // 메뉴 데이터 가져오기 (async/await 사용)
+  async function fetchMenus() {
+    try {
+      const response = await fetch("https://a76bddb8-22a9-4b7e-8c12-9e2e852a2945.mock.pstmn.io/"); // 같은 폴더에 menus.json
+      if (!response.ok) {
+        throw new Error("네트워크 응답이 올바르지 않습니다.");
+      }
+      const data = await response.json();
+     // alert("메뉴 데이터를 성공적으로 불러왔습니다!"); // 데이터 로드 성공 알림
+      return data; // menus 배열 반환
+    } catch (error) {
+      console.error("데이터 불러오기 오류:", error);
+      return [];
+    }
+  }
+
+  // DOM 으로 입력값 가져오는것
+  async function recommendMenu() {
+    const spicy = document.getElementById('spicy').value;
+    const budgetVal = Number(document.getElementById('budget').value);
+    const foodType = document.querySelector('input[name="foodType"]:checked');
+    const mood = document.getElementById('mood').value.trim();
+    // 입력값 검증 
+    if (!spicy || !budgetVal || !foodType || !mood) {
+      alert("모든 항목을 기입해주세요!");
+      return;
+    }
+
+    // MOCK API로 메뉴 가져오기
+    const menus = await fetchMenus();
+    // alert("메뉴 데이터를 성공적으로 불러왔습니다!2"); // 데이터 로드 성공 알림2
+    for (const menu of menus) {
+      if (spicy === menu.spicy&&
+      budgetVal === menu.budgetVal&&
+      foodType.value === menu.foodType&&
+      mood===(menu.mood))
+      {
+        alert(`오늘의 추천 메뉴는 ${menu.recommend}입니다!`);
+        return;
+      }
+  }
+    alert("조건에 맞는 메뉴가 없습니다. 다시 시도해주세요.");
+  }
+
+  // 버튼 이벤트 등록
+  const recommendBtn = document.getElementById('recommendBtn');
+  recommendBtn.addEventListener('click', recommendMenu);
+</script>
+</body>
+</html>
