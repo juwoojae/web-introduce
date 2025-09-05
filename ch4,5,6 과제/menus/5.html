@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>파스타 상세설명</title>
+  <style>
+    :root{
+      --bg:#fafafa;
+      --card:#ffffff;
+      --accent:#d35400;
+      --muted:#666;
+      --radius:12px;
+      font-family: 'Noto Sans KR', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    body{
+      margin:0;
+      padding:32px;
+      background:linear-gradient(180deg,#fff 0%,var(--bg) 100%);
+      display:flex;
+      justify-content:center;
+      color:#222;
+    }
+    .card{
+      width:720px;
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:0 8px 30px rgba(15,15,15,0.06);
+      overflow:hidden;
+    }
+    .hero{
+      display:grid;
+      grid-template-columns:220px 1fr;
+      gap:20px;
+      padding:24px;
+      align-items:center;
+    }
+    .img-wrap{
+      width:220px;height:140px;border-radius:10px;overflow:hidden;flex-shrink:0;
+      background:linear-gradient(135deg,#f7c59f,#f0a36b);
+      display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;
+    }
+    .title{font-size:20px;margin:0 0 6px 0}
+    .subtitle{color:var(--muted);font-size:13px;margin:0}
+
+    .content{padding:0 24px 24px 24px;line-height:1.6}
+    .meta{display:flex;gap:12px;margin:12px 0;color:var(--muted);font-size:13px}
+    .chip{background:#fff4f0;border:1px solid rgba(211,84,0,0.12);padding:6px 10px;border-radius:999px;font-weight:600;color:var(--accent)}
+    .section{margin-top:14px}
+    .section h3{margin:0 0 8px 0;font-size:15px}
+    .list{display:flex;flex-wrap:wrap;gap:8px}
+    .list .item{background:#f6f6f6;padding:8px 10px;border-radius:8px;font-size:13px}
+    .hungry{margin-top:12px;padding:12px;border-radius:10px;background:linear-gradient(90deg,rgba(211,84,0,0.06),rgba(211,84,0,0.02));border:1px solid rgba(211,84,0,0.08);font-weight:600}
+
+    @media (max-width:760px){
+      .card{width:100%;margin:0 12px}
+      .hero{grid-template-columns:1fr;grid-auto-rows:auto}
+      .img-wrap{width:100%;height:180px}
+    }
+  </style>
+</head>
+<body>
+  <article class="card" aria-labelledby="pasta-title">
+    <header class="hero">
+      <div class="img-wrap" role="img" aria-label="파스타 이미지">
+        파스타
+      </div>
+      <div>
+        <h1 id="pasta-title" class="title">풍미 가득 파스타</h1>
+        <p class="subtitle">신선한 재료와 소스가 어우러진 이탈리아 대표 요리</p>
+        <div class="meta">
+          <span class="chip">양식 · 인기메뉴</span>
+          <span class="meta-item">조리시간: 20분</span>
+          <span class="meta-item">칼로리: 약 600kcal</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="content">
+      <section class="section">
+        <h3>상세설명</h3>
+        <p>올리브 오일, 토마토, 크림 등 다양한 소스와 함께 즐기는 이탈리아 전통 요리입니다. 면의 식감과 소스의 풍미가 어우러져 가볍게도, 든든하게도 즐길 수 있습니다.</p>
+
+        <div class="hungry" aria-hidden="false">배고픔이 몰려올 때 향긋하게 한 접시</div>
+      </section>
+
+      <section class="section">
+        <h3>주요 재료</h3>
+        <div class="list">
+          <div class="item">파스타 면</div>
+          <div class="item">올리브 오일</div>
+          <div class="item">토마토/크림 소스</div>
+          <div class="item">마늘</div>
+          <div class="item">치즈</div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h3>추천 드시는 법</h3>
+        <p>소스에 잘 버무린 면을 치즈와 함께 즐기세요. 샐러드나 와인과 곁들이면 더욱 풍성한 한 끼가 됩니다.</p>
+      </section>
+
+      <footer style="margin-top:18px;color:var(--muted);font-size:13px">작성: 파스타 가이드 · 업데이트: 오늘</footer>
+    </div>
+  </article>
+</body>
+</html>

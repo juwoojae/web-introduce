@@ -9,6 +9,27 @@
       padding: 20px;
       background-color: #f9f9f9;
     }
+    h1 {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    .btn-container {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 0 10px;
+      background-color: #4caf50;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+    .btn:hover {
+      background-color: #45a049;
+    }
     .section {
       margin-bottom: 20px;
       padding: 15px;
@@ -36,6 +57,12 @@
 <body>
 
   <h1>🍴 점심 메뉴 추천기</h1>
+
+  <!-- 상단 버튼 영역 -->
+  <div class="btn-container">
+    <a href="main.html" class="btn">메인으로</a>
+    <a href="menus.html" class="btn">메뉴 조회</a>
+  </div>
 
   <!-- 1. 맵기 정도 -->
   <div class="section">
@@ -67,7 +94,7 @@
   <!-- 4. 오늘의 기분 -->
   <div class="section">
     <label for="mood">오늘의 기분: </label>
-    <input type="text" id="mood" placeholder="배고파요,기분좋음,힘들어요...">
+    <input type="text" id="mood" placeholder="배고파요, 기분좋음, 힘들어요...">
   </div>
 
   <!-- 5. 결과 출력 -->
@@ -76,61 +103,55 @@
   </div>
 
   <script>
-  // 예산 슬라이더 값 표시
-  const budget = document.getElementById('budget');
-  const budgetValue = document.getElementById('budgetValue');
-  budgetValue.textContent = budget.value;
-  budget.addEventListener('input', () => {
+    // 예산 슬라이더 값 표시
+    const budget = document.getElementById('budget');
+    const budgetValue = document.getElementById('budgetValue');
     budgetValue.textContent = budget.value;
-  });
+    budget.addEventListener('input', () => {
+      budgetValue.textContent = budget.value;
+    });
 
-  // 메뉴 데이터 가져오기 (async/await 사용)
-  async function fetchMenus() {
-    try {
-      const response = await fetch("https://a76bddb8-22a9-4b7e-8c12-9e2e852a2945.mock.pstmn.io/"); // 같은 폴더에 menus.json
-      if (!response.ok) {
-        throw new Error("네트워크 응답이 올바르지 않습니다.");
+    // 메뉴 데이터 가져오기
+    async function fetchMenus() {
+      try {
+        const response = await fetch("https://a76bddb8-22a9-4b7e-8c12-9e2e852a2945.mock.pstmn.io/");
+        if (!response.ok) {
+          throw new Error("네트워크 응답이 올바르지 않습니다.");
+        }
+        return await response.json();
+      } catch (error) {
+        console.error("데이터 불러오기 오류:", error);
+        return [];
       }
-      const data = await response.json();
-     // alert("메뉴 데이터를 성공적으로 불러왔습니다!"); // 데이터 로드 성공 알림
-      return data; // menus 배열 반환
-    } catch (error) {
-      console.error("데이터 불러오기 오류:", error);
-      return [];
-    }
-  }
-
-  // DOM 으로 입력값 가져오는것
-  async function recommendMenu() {
-    const spicy = document.getElementById('spicy').value;
-    const budgetVal = Number(document.getElementById('budget').value);
-    const foodType = document.querySelector('input[name="foodType"]:checked');
-    const mood = document.getElementById('mood').value.trim();
-    // 입력값 검증 
-    if (!spicy || !budgetVal || !foodType || !mood) {
-      alert("모든 항목을 기입해주세요!");
-      return;
     }
 
-    // MOCK API로 메뉴 가져오기
-    const menus = await fetchMenus();
-    // alert("메뉴 데이터를 성공적으로 불러왔습니다!2"); // 데이터 로드 성공 알림2
-    for (const menu of menus) {
-      if (spicy === menu.spicy&&
-      budgetVal === menu.budgetVal&&
-      foodType.value === menu.foodType&&
-      mood===(menu.mood))
-      {
-        alert(`오늘의 추천 메뉴는 ${menu.recommend}입니다!`);
+    // 추천 기능
+    async function recommendMenu() {
+      const spicy = document.getElementById('spicy').value;
+      const budgetVal = Number(document.getElementById('budget').value);
+      const foodType = document.querySelector('input[name="foodType"]:checked');
+      const mood = document.getElementById('mood').value.trim();
+
+      if (!spicy || !budgetVal || !foodType || !mood) {
+        alert("모든 항목을 기입해주세요!");
         return;
       }
-  }
-    alert("조건에 맞는 메뉴가 없습니다. 다시 시도해주세요.");
-  }
 
-  // 버튼 이벤트 등록
-  const recommendBtn = document.getElementById('recommendBtn');
-  recommendBtn.addEventListener('click', recommendMenu);
-</script>
+      const menus = await fetchMenus();
+      for (const menu of menus) {
+        if (spicy === menu.spicy &&
+            budgetVal === menu.budgetVal &&
+            foodType.value === menu.foodType &&
+            mood === menu.mood) {
+          alert(`오늘의 추천 메뉴는 ${menu.recommend}입니다!`);
+          return;
+        }
+      }
+      alert("조건에 맞는 메뉴가 없습니다. 다시 시도해주세요.");
+    }
+
+    // 버튼 이벤트 등록
+    document.getElementById('recommendBtn').addEventListener('click', recommendMenu);
+  </script>
 </body>
 </html>

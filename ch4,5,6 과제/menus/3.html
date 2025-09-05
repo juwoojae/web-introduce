@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>마라탕 상세설명</title>
+  <style>
+    :root{
+      --bg:#fafafa;
+      --card:#ffffff;
+      --accent:#d35400;
+      --muted:#666;
+      --radius:12px;
+      font-family: 'Noto Sans KR', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    body{
+      margin:0;
+      padding:32px;
+      background:linear-gradient(180deg,#fff 0%,var(--bg) 100%);
+      display:flex;
+      justify-content:center;
+      color:#222;
+    }
+    .card{
+      width:720px;
+      background:var(--card);
+      border-radius:var(--radius);
+      box-shadow:0 8px 30px rgba(15,15,15,0.06);
+      overflow:hidden;
+    }
+    .hero{
+      display:grid;
+      grid-template-columns:220px 1fr;
+      gap:20px;
+      padding:24px;
+      align-items:center;
+    }
+    .img-wrap{
+      width:220px;height:140px;border-radius:10px;overflow:hidden;flex-shrink:0;
+      background:linear-gradient(135deg,#f7c59f,#f0a36b);
+      display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;
+    }
+    .title{font-size:20px;margin:0 0 6px 0}
+    .subtitle{color:var(--muted);font-size:13px;margin:0}
+
+    .content{padding:0 24px 24px 24px;line-height:1.6}
+    .meta{display:flex;gap:12px;margin:12px 0;color:var(--muted);font-size:13px}
+    .chip{background:#fff4f0;border:1px solid rgba(211,84,0,0.12);padding:6px 10px;border-radius:999px;font-weight:600;color:var(--accent)}
+    .section{margin-top:14px}
+    .section h3{margin:0 0 8px 0;font-size:15px}
+    .list{display:flex;flex-wrap:wrap;gap:8px}
+    .list .item{background:#f6f6f6;padding:8px 10px;border-radius:8px;font-size:13px}
+    .hungry{margin-top:12px;padding:12px;border-radius:10px;background:linear-gradient(90deg,rgba(211,84,0,0.06),rgba(211,84,0,0.02));border:1px solid rgba(211,84,0,0.08);font-weight:600}
+
+    @media (max-width:760px){
+      .card{width:100%;margin:0 12px}
+      .hero{grid-template-columns:1fr;grid-auto-rows:auto}
+      .img-wrap{width:100%;height:180px}
+    }
+  </style>
+</head>
+<body>
+  <article class="card" aria-labelledby="mlt-title">
+    <header class="hero">
+      <div class="img-wrap" role="img" aria-label="마라탕 이미지">
+        마라탕
+      </div>
+      <div>
+        <h1 id="mlt-title" class="title">얼얼한 마라탕</h1>
+        <p class="subtitle">중국 사천 지방의 매운 향신료와 깊은 육수</p>
+        <div class="meta">
+          <span class="chip">중식 · 인기메뉴</span>
+          <span class="meta-item">조리시간: 15분</span>
+          <span class="meta-item">칼로리: 약 700kcal</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="content">
+      <section class="section">
+        <h3>상세설명</h3>
+        <p>얼얼한 마라 향과 깊은 국물이 어우러진 인기 중식 요리입니다. 각종 채소와 고기를 매운 육수에 끓여낸 얼큰하고 중독성 있는 맛이 특징입니다.</p>
+
+        <div class="hungry" aria-hidden="false">배고픔이 몰려올 때 얼얼하게 한 그릇</div>
+      </section>
+
+      <section class="section">
+        <h3>주요 재료</h3>
+        <div class="list">
+          <div class="item">숙주</div>
+          <div class="item">청경채</div>
+          <div class="item">버섯류</div>
+          <div class="item">소고기/양고기</div>
+          <div class="item">마라 소스</div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h3>추천 드시는 법</h3>
+        <p>취향에 맞게 당면, 두부, 해산물을 추가하고 고소한 땅콩소스나 소스를 곁들여 드세요. 매운맛을 즐기고 싶을 때 특히 좋습니다.</p>
+      </section>
+
+      <footer style="margin-top:18px;color:var(--muted);font-size:13px">작성: 마라탕 가이드 · 업데이트: 오늘</footer>
+    </div>
+  </article>
+</body>
+</html>
